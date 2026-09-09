@@ -116,14 +116,14 @@
             font-size: 1.15rem;
             font-weight: 800;
             color: #FFFFFF;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
         .essential-prices {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             margin-bottom: 1rem;
             flex-wrap: wrap;
         }
@@ -143,6 +143,33 @@
             font-size: 1.25rem;
             font-weight: 900;
             color: #FF3B30;
+        }
+        .date-selector {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            margin-top: 0.75rem;
+        }
+        .date-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            border: 1.5px solid #444852;
+            background-color: #1a1d24;
+            color: #9CA3AF;
+            border-radius: 0.625rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .date-btn:hover {
+            border-color: #FF3B30;
+            color: #FFFFFF;
+        }
+        .date-btn.selected {
+            background-color: #FF3B30;
+            border-color: #FF3B30;
+            color: #FFFFFF;
         }
         .essential-features {
             list-style-type: none;
@@ -366,6 +393,10 @@
                             <span class="price-value">R$ 500,00</span>
                         </div>
                     </div>
+                    <div class="date-selector" onclick="event.stopPropagation()">
+                        <button class="date-btn" onclick="selectPkgDates('bandas', 1)">1 Data</button>
+                        <button class="date-btn" onclick="selectPkgDates('bandas', 2)">2 Datas</button>
+                    </div>
                     <ul class="essential-features">
                         <li>1 Aftermovie (Vídeo-resumo com os melhores momentos da apresentação, público, banda e clima do evento, editado de forma dinâmica para transmitir a experiência do show)</li>
                         <li>1 Vídeo de música completa (registrado em 2 ângulos, com áudio captado diretamente da mesa de som do evento)</li>
@@ -389,6 +420,10 @@
                             <span class="price-value">R$ 600,00</span>
                         </div>
                     </div>
+                    <div class="date-selector" onclick="event.stopPropagation()">
+                        <button class="date-btn" onclick="selectPkgDates('produtores', 1)">1 Data</button>
+                        <button class="date-btn" onclick="selectPkgDates('produtores', 2)">2 Datas</button>
+                    </div>
                     <ul class="essential-features">
                         <li>Storymaker (Cobertura em tempo real para os Stories, com registros verticais feitos durante o evento, mostrando a apresentação, bastidores, público e momentos de destaque. Inclui 8 Stories)</li>
                         <li>Aftermovie (Vídeo-resumo com os melhores momentos, incluindo público e banda, editado de forma dinâmica para transmitir a experiência do evento)</li>
@@ -396,19 +431,6 @@
                         <li>Até 5 horas de evento</li>
                     </ul>
                 </div>
-            </div>
-        </div>
-
-        <!-- Número de Datas -->
-        <div class="mt-6">
-            <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Quantas datas você contrata?</h3>
-            <div class="flex gap-3">
-                <button id="btn-1data" class="flex-1 bg-accent hover:bg-accentDark text-white font-bold py-2.5 px-4 rounded-lg transition-colors duration-200" onclick="selectDates(1)">
-                    1 Data
-                </button>
-                <button id="btn-2datas" class="flex-1 bg-card hover:bg-gray-700 text-white font-bold py-2.5 px-4 rounded-lg border border-gray-800 transition-colors duration-200" onclick="selectDates(2)">
-                    2 Datas
-                </button>
             </div>
         </div>
 
@@ -559,16 +581,24 @@
         };
 
         let selectedEssential = null;
-        let selectedDates = 1;
+        let selectedDates = {};
         let selectedCheckboxAddons = {};
         let quantityAddons = {};
 
         function selectEssentialPackage(pkg) {
             selectedEssential = pkg;
             
+            // Inicializa datas para este pacote se não existir
+            if (!selectedDates[pkg]) {
+                selectedDates[pkg] = 1;
+            }
+
             // Atualiza UI dos pacotes
             document.getElementById('pkg-bandas').classList.toggle('selected', pkg === 'bandas');
             document.getElementById('pkg-produtores').classList.toggle('selected', pkg === 'produtores');
+
+            // Atualiza botões de data
+            updateDateButtons();
 
             // Mostra/esconde adicionais baseado na seleção
             if (pkg === 'produtores') {
@@ -590,17 +620,37 @@
             updateTotal();
         }
 
-        function selectDates(dates) {
-            selectedDates = dates;
+        function updateDateButtons() {
+            if (!selectedEssential) return;
+
+            const datesBandas = selectedDates['bandas'] || 1;
+            const datesProdutores = selectedDates['produtores'] || 1;
+
+            // Atualiza botões de Bandas
+            const bandas1Btn = document.querySelector('#pkg-bandas .date-btn:nth-child(1)');
+            const bandas2Btn = document.querySelector('#pkg-bandas .date-btn:nth-child(2)');
             
-            // Atualiza botões
-            document.getElementById('btn-1data').classList.toggle('bg-accent hover:bg-accentDark', dates === 1);
-            document.getElementById('btn-1data').classList.toggle('bg-card hover:bg-gray-700 border border-gray-800', dates !== 1);
+            bandas1Btn.classList.toggle('selected', datesBandas === 1);
+            bandas2Btn.classList.toggle('selected', datesBandas === 2);
+
+            // Atualiza botões de Produtores
+            const prod1Btn = document.querySelector('#pkg-produtores .date-btn:nth-child(1)');
+            const prod2Btn = document.querySelector('#pkg-produtores .date-btn:nth-child(2)');
             
-            document.getElementById('btn-2datas').classList.toggle('bg-accent hover:bg-accentDark', dates === 2);
-            document.getElementById('btn-2datas').classList.toggle('bg-card hover:bg-gray-700 border border-gray-800', dates !== 2);
+            prod1Btn.classList.toggle('selected', datesProdutores === 1);
+            prod2Btn.classList.toggle('selected', datesProdutores === 2);
+        }
+
+        function selectPkgDates(pkg, dates) {
+            selectedDates[pkg] = dates;
             
-            updateTotal();
+            // Se este pacote não estava selecionado, seleciona
+            if (selectedEssential !== pkg) {
+                selectEssentialPackage(pkg);
+            } else {
+                updateDateButtons();
+                updateTotal();
+            }
         }
 
         function toggleAddon(cardElement) {
@@ -649,13 +699,14 @@
                 return;
             }
 
-            let total = ESSENCIAL_PRICES[selectedEssential][selectedDates];
+            const dates = selectedDates[selectedEssential] || 1;
+            let total = ESSENCIAL_PRICES[selectedEssential][dates];
             let itemCount = 0;
             let summary = [];
 
             // Pacote essencial
             const pkgName = selectedEssential === 'bandas' ? 'Essencial Bandas' : 'Essencial Produtores';
-            const pkgDisplay = pkgName + ' (' + selectedDates + ' data' + (selectedDates > 1 ? 's' : '') + ')';
+            const pkgDisplay = pkgName + ' (' + dates + ' data' + (dates > 1 ? 's' : '') + ')';
             summary.push(pkgDisplay);
 
             // Adiciona checkboxes
@@ -690,16 +741,17 @@
                 return;
             }
 
-            let total = ESSENCIAL_PRICES[selectedEssential][selectedDates];
+            const dates = selectedDates[selectedEssential] || 1;
+            let total = ESSENCIAL_PRICES[selectedEssential][dates];
             let items = [];
 
             const pkgName = selectedEssential === 'bandas' ? 'Essencial Bandas' : 'Essencial Produtores';
             let pkgDesc = '';
 
             if (selectedEssential === 'bandas') {
-                pkgDesc = `• 1x ${pkgName} - ${selectedDates} data${selectedDates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - 1 Aftermovie\n  - 1 Vídeo de música completa (2 ângulos)\n  - 2 Vídeos curtos para Reels (2 ângulos)\n  - Até 2 horas de show`;
+                pkgDesc = `• 1x ${pkgName} - ${dates} data${dates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - 1 Aftermovie\n  - 1 Vídeo de música completa (2 ângulos)\n  - 2 Vídeos curtos para Reels (2 ângulos)\n  - Até 2 horas de show`;
             } else {
-                pkgDesc = `• 1x ${pkgName} - ${selectedDates} data${selectedDates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - Storymaker (8 Stories)\n  - Aftermovie\n  - Cobertura fotográfica (40 fotos)\n  - Até 5 horas de evento`;
+                pkgDesc = `• 1x ${pkgName} - ${dates} data${dates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - Storymaker (8 Stories)\n  - Aftermovie\n  - Cobertura fotográfica (40 fotos)\n  - Até 5 horas de evento`;
             }
             items.push(pkgDesc);
 
@@ -733,7 +785,7 @@
         }
 
         // Inicializa
-        selectDates(1);
+        updateDateButtons();
     </script>
 </body>
 </html>
