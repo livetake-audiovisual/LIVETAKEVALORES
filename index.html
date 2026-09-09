@@ -90,6 +90,170 @@
             font-weight: bold;
             flex-shrink: 0;
         }
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(255, 59, 48, 0.3);
+        }
+        .addon-card {
+            border: 2px solid #444852;
+            background-color: #16181E;
+            border-radius: 1rem;
+            padding: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .addon-card:hover {
+            border-color: #666;
+        }
+        .addon-card input[type="checkbox"]:checked + .addon-content {
+            opacity: 1;
+        }
+        .addon-card input[type="checkbox"]:not(:checked) + .addon-content {
+            opacity: 0.8;
+        }
+        .addon-content {
+            transition: opacity 0.2s;
+        }
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .addon-card input[type="checkbox"] {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-top: 0.125rem;
+            accent-color: #FF3B30;
+            cursor: pointer;
+        }
+        .addon-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        .addon-name {
+            font-weight: 600;
+            color: #FFFFFF;
+            font-size: 0.9rem;
+        }
+        .addon-price {
+            color: #FF3B30;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .addon-limit {
+            font-size: 0.7rem;
+            color: #9CA3AF;
+            margin-top: 0.25rem;
+        }
+        .addon-description {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+            line-height: 1.4;
+            margin-top: 0.5rem;
+        }
+        .essential-box {
+            background: linear-gradient(135deg, rgba(255, 59, 48, 0.15), rgba(255, 59, 48, 0.08));
+            border: 2px solid #FF3B30;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .essential-badge {
+            display: inline-block;
+            background-color: #FF3B30;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.375rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .essential-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+        .essential-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #FF3B30;
+            margin-bottom: 1rem;
+        }
+        .essential-features {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .essential-features li {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .essential-features li:before {
+            content: "✓";
+            color: #FF3B30;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .quantity-selector button {
+            width: 1.75rem;
+            height: 1.75rem;
+            padding: 0;
+            border: 1px solid #444852;
+            background: #1a1d24;
+            color: #FFFFFF;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .quantity-selector button:hover {
+            border-color: #FF3B30;
+            background: #222;
+        }
+        .quantity-selector button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .quantity-input {
+            width: 2.5rem;
+            text-align: center;
+            background: #1a1d24;
+            border: 1px solid #444852;
+            color: #FFFFFF;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.25rem;
+        }
+        .quantity-input:focus {
+            outline: none;
+            border-color: #FF3B30;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between pb-32">
@@ -106,18 +270,13 @@
                     <p class="text-[10px] font-bold tracking-[0.3em] text-textMuted uppercase mt-1">A U D I O V I S U A L</p>
                 </div>
             </div>
-            <p class="text-xs text-textMuted mt-1 font-medium">Escolha o plano ideal para o seu show</p>
+            <p class="text-xs text-textMuted mt-1 font-medium">Personalize seu pacote de cobertura</p>
         </div>
     </header>
 
     <!-- Main Container -->
     <main class="max-w-md mx-auto w-full px-4 pt-6 flex-1">
         
-        <div class="mb-6">
-            <h2 class="text-xl font-bold text-white tracking-tight">Nossos Pacotes</h2>
-            <p class="text-xs text-textMuted mt-1">Selecione uma das opções abaixo para solicitar a contratação via WhatsApp.</p>
-        </div>
-
         <!-- Important Notices -->
         <div class="important-notices">
             <h3>⚠️ Avisos Importantes</h3>
@@ -129,168 +288,151 @@
             </ul>
         </div>
 
-        <!-- Packages List -->
-        <div class="space-y-4">
-            
-            <!-- 1. Pacote Storymaker -->
-            <div class="pkg-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700 relative" onclick="selectPackage('storymaker')">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                        <h3 class="text-base font-bold text-white">Pacote Storymaker</h3>
-                        <span class="inline-block text-lg font-black text-accent mt-0.5">R$ 150,00</span>
-                    </div>
-                    <input type="radio" name="package" id="radio-storymaker" value="storymaker" class="w-5 h-5 accent-accent pointer-events-none mt-1">
-                </div>
-                <ul class="text-xs text-textMuted space-y-1.5 list-disc pl-4 border-t border-gray-800/80 pt-3">
-                    <li>8 stories produzidos e postáveis em tempo real, mostrando a vibe do show e a interação com o público.</li>
-                </ul>
-            </div>
-
-            <!-- 2. Pacote Fotográfico -->
-            <div class="pkg-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700 relative" onclick="selectPackage('fotografico')">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                        <h3 class="text-base font-bold text-white">Pacote Fotográfico</h3>
-                        <span class="inline-block text-lg font-black text-accent mt-0.5">R$ 250,00</span>
-                    </div>
-                    <input type="radio" name="package" id="radio-fotografico" value="fotografico" class="w-5 h-5 accent-accent pointer-events-none mt-1">
-                </div>
-                <ul class="text-xs text-textMuted space-y-1.5 list-disc pl-4 border-t border-gray-800/80 pt-3">
-                    <li>Cobertura fotográfica completa do show, com registros dos artistas, público, palco e principais momentos da apresentação.</li>
-                    <li>Fotos tratadas em alta resolução, prontas para divulgação nas redes sociais e utilização promocional.</li>
-                </ul>
-            </div>
-
-            <!-- 3. Pacote Story + Fotografia (COM DESCONTO) -->
-            <div class="pkg-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700 relative" onclick="selectPackage('story_foto')">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                        <h3 class="text-base font-bold text-white">Pacote Story + Fotografia</h3>
-                        <div class="flex items-center gap-2 mt-0.5">
-                            <span class="inline-block text-lg font-black text-accent">R$ 300,00</span>
-                            <span class="discount-badge">-R$ 100</span>
-                        </div>
-                        <span class="price-original">De R$ 400,00</span>
-                    </div>
-                    <input type="radio" name="package" id="radio-story_foto" value="story_foto" class="w-5 h-5 accent-accent pointer-events-none mt-1">
-                </div>
-                <ul class="text-xs text-textMuted space-y-1.5 list-disc pl-4 border-t border-gray-800/80 pt-3">
-                    <li>8 stories produzidos e postáveis em tempo real, mostrando a vibe do show, bastidores e interação com o público.</li>
-                    <li>Cobertura fotográfica completa, com registros dos melhores momentos do show, artistas e público, com fotos tratadas em alta resolução.</li>
-                </ul>
-            </div>
-
-            <!-- 4. Pacote Aftermovie + Fotografia (COM DESCONTO) -->
-            <div class="pkg-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700 relative" onclick="selectPackage('after_foto')">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                        <h3 class="text-base font-bold text-white">Pacote Aftermovie + Fotografia</h3>
-                        <div class="flex items-center gap-2 mt-0.5">
-                            <span class="inline-block text-lg font-black text-accent">R$ 300,00</span>
-                            <span class="discount-badge">-R$ 100</span>
-                        </div>
-                        <span class="price-original">De R$ 400,00</span>
-                    </div>
-                    <input type="radio" name="package" id="radio-after_foto" value="after_foto" class="w-5 h-5 accent-accent pointer-events-none mt-1">
-                </div>
-                <ul class="text-xs text-textMuted space-y-1.5 list-disc pl-4 border-t border-gray-800/80 pt-3">
-                    <li>Aftermovie dinâmico, reunindo os melhores momentos do show em um vídeo envolvente, ideal para divulgação nas redes sociais.</li>
-                    <li>Cobertura fotográfica, com registros dos melhores momentos do evento, artistas e público, com fotos tratadas em alta resolução.</li>
-                </ul>
-            </div>
-
-            <!-- 5. Pacote Essencial -->
-            <div class="pkg-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700 relative" onclick="selectPackage('essencial')">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                        <h3 class="text-base font-bold text-white">Pacote Essencial</h3>
-                        <span class="inline-block text-lg font-black text-accent mt-0.5">R$ 300,00</span>
-                    </div>
-                    <input type="radio" name="package" id="radio-essencial" value="essencial" class="w-5 h-5 accent-accent pointer-events-none mt-1">
-                </div>
-                <ul class="text-xs text-textMuted space-y-1.5 list-disc pl-4 border-t border-gray-800/80 pt-3">
-                    <li>1 vídeo de música completa (2 ângulos)</li>
-                    <li>1 Aftermovie</li>
-                    <li>2 vídeos curtos para Reels (2 ângulos, média de 1 min)</li>
-                </ul>
-            </div>
-
-            <!-- 6. Pacote Essencial + Fotografia (COM DESCONTO) -->
-            <div class="pkg-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700 relative" onclick="selectPackage('essencial_foto')">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                        <h3 class="text-base font-bold text-white">Pacote Essencial + Fotografia</h3>
-                        <div class="flex items-center gap-2 mt-0.5">
-                            <span class="inline-block text-lg font-black text-accent">R$ 450,00</span>
-                            <span class="discount-badge">-R$ 100</span>
-                        </div>
-                        <span class="price-original">De R$ 550,00</span>
-                    </div>
-                    <input type="radio" name="package" id="radio-essencial_foto" value="essencial_foto" class="w-5 h-5 accent-accent pointer-events-none mt-1">
-                </div>
-                <ul class="text-xs text-textMuted space-y-1.5 list-disc pl-4 border-t border-gray-800/80 pt-3">
-                    <li>1 vídeo de música completa em 2 ângulos</li>
-                    <li>1 Aftermovie com os melhores momentos do show</li>
-                    <li>2 vídeos curtos para Reels, em 2 ângulos, com média de 1 minuto cada</li>
-                    <li>Cobertura fotográfica, com registros dos melhores momentos do show, artistas e público, com fotos tratadas em alta resolução.</li>
-                </ul>
-            </div>
-
-            <!-- 7. Pacote Completo -->
-            <div class="pkg-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700 relative" onclick="selectPackage('completo')">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                        <span class="inline-block bg-accent/20 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">RECOMENDADO</span>
-                        <h3 class="text-base font-bold text-white">Pacote Completo</h3>
-                        <span class="inline-block text-lg font-black text-accent mt-0.5">R$ 600,00</span>
-                    </div>
-                    <input type="radio" name="package" id="radio-completo" value="completo" class="w-5 h-5 accent-accent pointer-events-none mt-1">
-                </div>
-                <ul class="text-xs text-textMuted space-y-1.5 list-disc pl-4 border-t border-gray-800/80 pt-3">
-                    <li>1 vídeo de música completa (2 ângulos)</li>
-                    <li>1 Aftermovie</li>
-                    <li>4 vídeos curtos para Reels (2 ângulos, média de 1 min)</li>
-                    <li>Storymaker (conteúdo em tempo real)</li>
-                </ul>
-            </div>
-
-            <!-- 8. Pacote Completo + Fotografia (COM DESCONTO) -->
-            <div class="pkg-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700 relative" onclick="selectPackage('completo_foto')">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                        <span class="inline-block bg-accent/20 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">MAIS COMPLETO</span>
-                        <h3 class="text-base font-bold text-white">Pacote Completo + Fotografia</h3>
-                        <div class="flex items-center gap-2 mt-0.5">
-                            <span class="inline-block text-lg font-black text-accent">R$ 750,00</span>
-                            <span class="discount-badge">-R$ 100</span>
-                        </div>
-                        <span class="price-original">De R$ 850,00</span>
-                    </div>
-                    <input type="radio" name="package" id="radio-completo_foto" value="completo_foto" class="w-5 h-5 accent-accent pointer-events-none mt-1">
-                </div>
-                <ul class="text-xs text-textMuted space-y-1.5 list-disc pl-4 border-t border-gray-800/80 pt-3">
-                    <li>1 vídeo de música completa em 2 ângulos</li>
-                    <li>1 Aftermovie com os melhores momentos do show</li>
-                    <li>4 vídeos curtos para Reels, em 2 ângulos, com média de 1 minuto cada</li>
-                    <li>Storymaker, com conteúdo produzido e postado em tempo real</li>
-                    <li>Cobertura fotográfica, com registros dos melhores momentos do show, artistas e público, com fotos tratadas em alta resolução.</li>
-                </ul>
-            </div>
-
+        <!-- Pacote Essencial (Obrigatório) -->
+        <div class="essential-box">
+            <div class="essential-badge">📦 Pacote Essencial (Obrigatório)</div>
+            <div class="essential-title">Pacote Essencial</div>
+            <div class="essential-price">R$ 300,00</div>
+            <ul class="essential-features">
+                <li>1 Aftermovie (Vídeo-resumo com os melhores momentos da apresentação, público, banda e clima do evento, editado de forma dinâmica para transmitir a experiência do show)</li>
+                <li>1 Vídeo de música completa (registrado em 2 ângulos, com áudio captado diretamente da mesa de som do evento)</li>
+                <li>2 Vídeos curtos para Reels (aproximadamente 1 minuto, produzidos em 2 ângulos, com áudio captado da mesa de som. Ideais para divulgação nas redes sociais)</li>
+            </ul>
         </div>
+
+        <!-- Adicionais Secção -->
+        <h2 class="section-title">Serviços Adicionais</h2>
+
+        <!-- Adicionais - Seleção Única (Checkbox) -->
+        <div class="space-y-3 mb-6">
+            
+            <!-- Cobertura Fotográfica -->
+            <div class="addon-card" onclick="toggleAddon(this)">
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="addon-fotografia" class="addon-checkbox" data-name="Cobertura Fotográfica" data-price="150" data-max="1">
+                    <div class="addon-content flex-1">
+                        <div class="addon-header">
+                            <div>
+                                <div class="addon-name">Cobertura Fotográfica</div>
+                                <div class="addon-limit">Seleção única</div>
+                            </div>
+                            <div class="addon-price">+R$ 150,00</div>
+                        </div>
+                        <div class="addon-description">Registro fotográfico do show com câmera, incluindo momentos da apresentação, artistas e público. Entrega média de 40 fotos tratadas em alta resolução.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storymaker -->
+            <div class="addon-card" onclick="toggleAddon(this)">
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="addon-storymaker" class="addon-checkbox" data-name="Storymaker" data-price="150" data-max="1">
+                    <div class="addon-content flex-1">
+                        <div class="addon-header">
+                            <div>
+                                <div class="addon-name">Storymaker</div>
+                                <div class="addon-limit">Seleção única</div>
+                            </div>
+                            <div class="addon-price">+R$ 150,00</div>
+                        </div>
+                        <div class="addon-description">Cobertura em tempo real para os Stories, com registros verticais feitos durante o evento. Inclui 8 Stories mostrando apresentação, bastidores, público e momentos de destaque.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adicionais - Seleção Múltipla -->
+        <h3 class="text-sm font-bold text-white uppercase tracking-wide mt-6 mb-3 text-textMuted">Escolha as quantidades adicionais:</h3>
+
+        <div class="space-y-3">
+            
+            <!-- Aftermovie Adicional -->
+            <div class="addon-card">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                    <div>
+                        <div class="addon-name">Aftermovie Adicional</div>
+                        <div class="addon-limit">Até 10 unidades</div>
+                        <div class="addon-description mt-1">Vídeo-resumo adicional do show, reunindo os principais momentos da apresentação em uma edição dinâmica.</div>
+                    </div>
+                    <div class="addon-price text-right">+R$ 100<br><span style="font-size: 0.75rem;">p/ unid.</span></div>
+                </div>
+                <div class="quantity-selector">
+                    <button onclick="decreaseQty('aftermovie-qty')">−</button>
+                    <input type="number" id="aftermovie-qty" class="quantity-input" value="0" min="0" max="10" data-name="Aftermovie Adicional" data-price="100" onchange="updateTotal()">
+                    <button onclick="increaseQty('aftermovie-qty')">+</button>
+                </div>
+            </div>
+
+            <!-- Vídeo Curto Adicional -->
+            <div class="addon-card">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                    <div>
+                        <div class="addon-name">Vídeo Curto Adicional</div>
+                        <div class="addon-limit">Até 10 unidades</div>
+                        <div class="addon-description mt-1">Trecho de uma música da apresentação, registrado em 2 ângulos, com áudio captado da mesa de som. Ideal para Reels, Shorts e Stories.</div>
+                    </div>
+                    <div class="addon-price text-right">+R$ 50<br><span style="font-size: 0.75rem;">p/ unid.</span></div>
+                </div>
+                <div class="quantity-selector">
+                    <button onclick="decreaseQty('videocurto-qty')">−</button>
+                    <input type="number" id="videocurto-qty" class="quantity-input" value="0" min="0" max="10" data-name="Vídeo Curto Adicional" data-price="50" onchange="updateTotal()">
+                    <button onclick="increaseQty('videocurto-qty')">+</button>
+                </div>
+            </div>
+
+            <!-- Vídeo de Música Completa Adicional -->
+            <div class="addon-card">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                    <div>
+                        <div class="addon-name">Vídeo de Música Completa Adicional</div>
+                        <div class="addon-limit">Até 10 unidades</div>
+                        <div class="addon-description mt-1">Uma música completa da apresentação, registrada em 2 ângulos, com áudio captado diretamente da mesa de som.</div>
+                    </div>
+                    <div class="addon-price text-right">+R$ 100<br><span style="font-size: 0.75rem;">p/ unid.</span></div>
+                </div>
+                <div class="quantity-selector">
+                    <button onclick="decreaseQty('videomusica-qty')">−</button>
+                    <input type="number" id="videomusica-qty" class="quantity-input" value="0" min="0" max="10" data-name="Vídeo de Música Completa Adicional" data-price="100" onchange="updateTotal()">
+                    <button onclick="increaseQty('videomusica-qty')">+</button>
+                </div>
+            </div>
+
+            <!-- Hora Extra -->
+            <div class="addon-card">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                    <div>
+                        <div class="addon-name">Hora Extra</div>
+                        <div class="addon-limit">Até 10 horas</div>
+                        <div class="addon-description mt-1">Para coberturas que ultrapassem o período inicialmente contratado. Cada hora adicional de cobertura é acrescentada ao valor do pacote.</div>
+                    </div>
+                    <div class="addon-price text-right">+R$ 80<br><span style="font-size: 0.75rem;">p/ hora</span></div>
+                </div>
+                <div class="quantity-selector">
+                    <button onclick="decreaseQty('horaextra-qty')">−</button>
+                    <input type="number" id="horaextra-qty" class="quantity-input" value="0" min="0" max="10" data-name="Hora Extra" data-price="80" onchange="updateTotal()">
+                    <button onclick="increaseQty('horaextra-qty')">+</button>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Sticky Bottom Bar -->
     <div class="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-md border-t border-gray-800 p-4 z-50">
         <div class="max-w-md mx-auto flex flex-col gap-3">
-            <div class="flex items-center justify-between px-1">
-                <span class="text-xs uppercase tracking-wider font-bold text-textMuted">Pacote Selecionado</span>
-                <span id="total-price" class="text-2xl font-black text-white">R$ 0,00</span>
+            <div class="flex items-start justify-between px-1">
+                <div>
+                    <span class="text-xs uppercase tracking-wider font-bold text-textMuted block mb-1">Valor Total</span>
+                    <span id="total-price" class="text-3xl font-black text-accent">R$ 300,00</span>
+                </div>
+                <div class="text-right text-xs text-textMuted">
+                    <div id="summary-items">Pacote Essencial</div>
+                </div>
             </div>
             
-            <button onclick="sendToWhatsapp()" class="w-full bg-accent hover:bg-accentDark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-accent/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+            <button onclick="sendToWhatsapp()" class="w-full bg-accent hover:bg-accentDark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-accent/20 flex items-center justify-center gap-3 transition-colors duration-200">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.979-.001-3.901-.5-5.684-1.432L.057 24zm8.386-7.439p-1.933c.835.545 1.87.866 2.937.865 5.211 0 9.437-4.226 9.437-9.439 0-2.52-1.034-4.892-2.913-6.66-.047 3.13-2.647 5.623-5.984 5.623-3.469 0-6.29-2.746-6.29-6.13 0-2.倒.074 2.03.545 3.946 1.486 4.471 4.817 7.795 9.213 7.795z"/>
                 </svg>
                 Solicitar Pacote no WhatsApp
             </button>
@@ -299,54 +441,123 @@
 
     <!-- Script de Seleção e WhatsApp -->
     <script>
-        const packagesData = {
-            storymaker: { name: "Pacote Storymaker", price: 150 },
-            fotografico: { name: "Pacote Fotográfico", price: 250 },
-            story_foto: { name: "Pacote Story + Fotografia", price: 300 },
-            after_foto: { name: "Pacote Aftermovie + Fotografia", price: 300 },
-            essencial: { name: "Pacote Essencial", price: 300 },
-            essencial_foto: { name: "Pacote Essencial + Fotografia", price: 450 },
-            completo: { name: "Pacote Completo", price: 600 },
-            completo_foto: { name: "Pacote Completo + Fotografia", price: 750 }
-        };
+        const ESSENCIAL_PRICE = 300;
+        let selectedAddons = {};
+        let selectedCheckboxAddons = {};
+        let quantityAddons = {};
 
-        let selectedKey = null;
-
-        function selectPackage(key) {
-            selectedKey = key;
+        function toggleAddon(cardElement) {
+            const checkbox = cardElement.querySelector('input[type="checkbox"]');
+            const id = checkbox.id;
+            const isChecked = checkbox.checked;
             
-            document.querySelectorAll('.pkg-card').forEach(card => card.classList.remove('card-active'));
-            document.querySelectorAll('input[name="package"]').forEach(radio => radio.checked = false);
-
-            const radio = document.getElementById('radio-' + key);
-            if (radio) {
-                radio.checked = true;
-                const card = radio.closest('.pkg-card');
-                if (card) card.classList.add('card-active');
+            if (!isChecked) {
+                checkbox.checked = true;
+                selectedCheckboxAddons[id] = {
+                    name: checkbox.dataset.name,
+                    price: parseFloat(checkbox.dataset.price),
+                    max: parseFloat(checkbox.dataset.max)
+                };
+            } else {
+                checkbox.checked = false;
+                delete selectedCheckboxAddons[id];
             }
+            
+            updateTotal();
+        }
 
-            const pkg = packagesData[key];
-            if (pkg) {
-                document.getElementById('total-price').innerText = 'R$ ' + pkg.price.toFixed(2).replace('.', ',');
+        function increaseQty(inputId) {
+            const input = document.getElementById(inputId);
+            const max = parseInt(input.max);
+            const current = parseInt(input.value) || 0;
+            if (current < max) {
+                input.value = current + 1;
+                updateTotal();
             }
+        }
+
+        function decreaseQty(inputId) {
+            const input = document.getElementById(inputId);
+            const current = parseInt(input.value) || 0;
+            if (current > 0) {
+                input.value = current - 1;
+                updateTotal();
+            }
+        }
+
+        function updateTotal() {
+            let total = ESSENCIAL_PRICE;
+            let itemCount = 0;
+            let summary = [];
+
+            // Adiciona checkboxes
+            Object.keys(selectedCheckboxAddons).forEach(id => {
+                const addon = selectedCheckboxAddons[id];
+                total += addon.price;
+                itemCount++;
+                summary.push(addon.name);
+            });
+
+            // Adiciona quantidades
+            const qtyInputs = document.querySelectorAll('.quantity-input');
+            qtyInputs.forEach(input => {
+                const qty = parseInt(input.value) || 0;
+                if (qty > 0) {
+                    const price = parseFloat(input.dataset.price);
+                    const name = input.dataset.name;
+                    total += price * qty;
+                    itemCount += qty;
+                    summary.push(`${qty}x ${name}`);
+                }
+            });
+
+            // Atualiza display
+            document.getElementById('total-price').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+            
+            let summaryText = 'Pacote Essencial';
+            if (summary.length > 0) {
+                summaryText += ' + ' + summary.length + ' item' + (summary.length > 1 ? 's' : '');
+            }
+            document.getElementById('summary-items').textContent = summaryText;
         }
 
         function sendToWhatsapp() {
-            if (!selectedKey || !packagesData[selectedKey]) {
-                alert('Por favor, selecione um pacote antes de continuar.');
-                return;
-            }
+            let total = ESSENCIAL_PRICE;
+            let items = [];
 
-            const pkg = packagesData[selectedKey];
-            let msg = `*Olá, LiveTake! Tenho interesse na contratação do seguinte pacote:*\n\n`;
-            msg += `📌 *${pkg.name}*\n`;
-            msg += `💰 *Valor:* R$ ${pkg.price.toFixed(2).replace('.', ',')}\n\n`;
+            items.push('• 1x Pacote Essencial (R$ 300,00)\n  - 1 Aftermovie\n  - 1 Vídeo de música completa (2 ângulos)\n  - 2 Vídeos curtos para Reels (2 ângulos)');
+
+            // Adiciona itens checkbox
+            Object.keys(selectedCheckboxAddons).forEach(id => {
+                const addon = selectedCheckboxAddons[id];
+                items.push(`• 1x ${addon.name} (R$ ${addon.price.toFixed(2).replace('.', ',')})`);
+                total += addon.price;
+            });
+
+            // Adiciona quantidades
+            const qtyInputs = document.querySelectorAll('.quantity-input');
+            qtyInputs.forEach(input => {
+                const qty = parseInt(input.value) || 0;
+                if (qty > 0) {
+                    const price = parseFloat(input.dataset.price);
+                    const name = input.dataset.name;
+                    const subtotal = price * qty;
+                    items.push(`• ${qty}x ${name} (R$ ${subtotal.toFixed(2).replace('.', ',')})`);
+                    total += subtotal;
+                }
+            });
+
+            let msg = `*Olá, LiveTake! Tenho interesse na seguinte cobertura para meu evento:*\n\n`;
+            msg += items.join('\n') + '\n\n';
+            msg += `*Valor Total: R$ ${total.toFixed(2).replace('.', ',')}\n\n`;
             msg += `Gostaria de verificar a disponibilidade de data!`;
 
-            // Número direto para WhatsApp
             const url = `https://wa.me/5521980563235?text=${encodeURIComponent(msg)}`;
             window.open(url, '_blank');
         }
+
+        // Inicializa totais
+        updateTotal();
     </script>
 </body>
 </html>
