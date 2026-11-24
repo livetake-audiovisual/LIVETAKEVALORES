@@ -26,337 +26,65 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0B0C10;
-            color: #FFFFFF;
-        }
-        .rec-dot {
-            animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse-red {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.85); }
-        }
-        .important-notices {
-            background-color: rgba(255, 59, 48, 0.1);
-            border-left: 4px solid #FF3B30;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .important-notices h3 {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #FF3B30;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-        }
-        .important-notices ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .important-notices li {
-            font-size: 0.75rem;
-            line-height: 1.5;
-            color: #9CA3AF;
-            margin-bottom: 0.5rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-        .important-notices li:before {
-            content: "✓";
-            color: #10B981;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        .section-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(255, 59, 48, 0.3);
-        }
-        .essential-box {
-            background: linear-gradient(135deg, rgba(255, 59, 48, 0.15), rgba(255, 59, 48, 0.08));
-            border: 2px solid #FF3B30;
-            border-radius: 1.25rem;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .essential-box:hover {
-            background: linear-gradient(135deg, rgba(255, 59, 48, 0.2), rgba(255, 59, 48, 0.12));
-            border-color: #FF5247;
-        }
-        .essential-box.selected {
-            background: linear-gradient(135deg, rgba(255, 59, 48, 0.25), rgba(255, 59, 48, 0.15));
-            box-shadow: 0 0 20px rgba(255, 59, 48, 0.3);
-        }
-        .essential-badge {
-            display: inline-block;
-            background-color: #FF3B30;
-            color: white;
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 0.375rem 0.75rem;
-            border-radius: 0.375rem;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.05em;
-        }
-        .essential-title {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .essential-prices {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        .price-option {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-        .price-label {
-            font-size: 0.65rem;
-            color: #9CA3AF;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-        }
-        .price-value {
-            font-size: 1.25rem;
-            font-weight: 900;
-            color: #FF3B30;
-        }
-        .date-selector {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            margin-top: 0.75rem;
-        }
-        .date-btn {
-            flex: 1;
-            padding: 0.625rem 1rem;
-            border: 1.5px solid #444852;
-            background-color: #1a1d24;
-            color: #9CA3AF;
-            border-radius: 0.625rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .date-btn:hover {
-            border-color: #FF3B30;
-            color: #FFFFFF;
-        }
-        .date-btn.selected {
-            background-color: #FF3B30;
-            border-color: #FF3B30;
-            color: #FFFFFF;
-        }
-        .essential-features {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .essential-features li {
-            font-size: 0.75rem;
-            color: #9CA3AF;
-            line-height: 1.8;
-            margin-bottom: 0.75rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-        .essential-features li:before {
-            content: "✓";
-            color: #FF3B30;
-            font-weight: bold;
-            flex-shrink: 0;
-            margin-top: 0.1rem;
-        }
-        .feature-item {
-            display: inline;
-        }
-        .feature-title {
-            font-weight: 700;
-            color: #FFFFFF;
-        }
-        .feature-description {
-            color: #9CA3AF;
-            font-weight: 400;
-        }
-        .radio-indicator {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 1.5rem;
-            height: 1.5rem;
-            border: 2px solid #FF3B30;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        .essential-box.selected .radio-indicator {
-            background-color: #FF3B30;
-        }
-        .radio-indicator::after {
-            content: "";
-            width: 0.5rem;
-            height: 0.5rem;
-            background-color: white;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .essential-box.selected .radio-indicator::after {
-            opacity: 1;
-        }
-        .addon-card {
-            border: 2px solid #444852;
-            background-color: #16181E;
-            border-radius: 1rem;
-            padding: 1rem;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-        .addon-card:hover {
-            border-color: #666;
-        }
-        .addon-card input[type="checkbox"]:checked + .addon-content {
-            opacity: 1;
-        }
-        .addon-card input[type="checkbox"]:not(:checked) + .addon-content {
-            opacity: 0.8;
-        }
-        .addon-content {
-            transition: opacity 0.2s;
-        }
-        .checkbox-wrapper {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-        .addon-card input[type="checkbox"] {
-            flex-shrink: 0;
-            width: 1.25rem;
-            height: 1.25rem;
-            margin-top: 0.125rem;
-            accent-color: #FF3B30;
-            cursor: pointer;
-        }
-        .addon-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.5rem;
-        }
-        .addon-name {
-            font-weight: 600;
-            color: #FFFFFF;
-            font-size: 0.9rem;
-        }
-        .addon-price {
-            color: #FF3B30;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-        .addon-limit {
-            font-size: 0.7rem;
-            color: #9CA3AF;
-            margin-top: 0.25rem;
-        }
-        .addon-description {
-            font-size: 0.75rem;
-            color: #9CA3AF;
-            line-height: 1.4;
-            margin-top: 0.5rem;
-        }
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-        }
-        .quantity-selector button {
-            width: 1.75rem;
-            height: 1.75rem;
-            padding: 0;
-            border: 1px solid #444852;
-            background: #1a1d24;
-            color: #FFFFFF;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        .quantity-selector button:hover {
-            border-color: #FF3B30;
-            background: #222;
-        }
-        .quantity-selector button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        .quantity-input {
-            width: 2.5rem;
-            text-align: center;
-            background: #1a1d24;
-            border: 1px solid #444852;
-            color: #FFFFFF;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 0.25rem;
-        }
-        .quantity-input:focus {
-            outline: none;
-            border-color: #FF3B30;
-        }
-        .error-message {
-            background-color: rgba(255, 59, 48, 0.15);
-            border: 1px solid #FF3B30;
-            color: #FF3B30;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: none;
-        }
-        .error-message.show {
-            display: block;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B0C10; color: #FFFFFF; }
+        .rec-dot { animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse-red { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
+        .important-notices { background-color: rgba(255, 59, 48, 0.1); border-left: 4px solid #FF3B30; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem; }
+        .important-notices h3 { font-size: 0.875rem; font-weight: 700; color: #FF3B30; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+        .important-notices ul { list-style-type: none; padding: 0; }
+        .important-notices li { font-size: 0.75rem; line-height: 1.5; color: #9CA3AF; margin-bottom: 0.5rem; display: flex; gap: 0.5rem; }
+        .important-notices li:before { content: "✓"; color: #10B981; font-weight: bold; flex-shrink: 0; }
+        .section-title { font-size: 0.95rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(255, 59, 48, 0.3); }
+        .essential-box { background: linear-gradient(135deg, rgba(255, 59, 48, 0.15), rgba(255, 59, 48, 0.08)); border: 2px solid #FF3B30; border-radius: 1.25rem; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; position: relative; }
+        .essential-box:hover { background: linear-gradient(135deg, rgba(255, 59, 48, 0.2), rgba(255, 59, 48, 0.12)); border-color: #FF5247; }
+        .essential-box.selected { background: linear-gradient(135deg, rgba(255, 59, 48, 0.25), rgba(255, 59, 48, 0.15)); box-shadow: 0 0 20px rgba(255, 59, 48, 0.3); }
+        .essential-badge { display: inline-block; background-color: #FF3B30; color: white; text-align: center; text-transform: uppercase; font-size: 0.65rem; font-weight: 800; padding: 0.375rem 0.75rem; border-radius: 0.375rem; margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+        .essential-title { font-size: 1.15rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+        .essential-prices { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .price-option { display: flex; flex-direction: column; gap: 0.25rem; }
+        .price-label { font-size: 0.65rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+        .price-value { font-size: 1.25rem; font-weight: 900; color: #FF3B30; }
+        .date-selector { display: flex; gap: 0.75rem; margin-bottom: 1rem; margin-top: 0.75rem; }
+        .date-btn { flex: 1; padding: 0.625rem 1rem; border: 1.5px solid #444852; background-color: #1a1d24; color: #9CA3AF; border-radius: 0.625rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .date-btn:hover { border-color: #FF3B30; color: #FFFFFF; }
+        .date-btn.selected { background-color: #FF3B30; border-color: #FF3B30; color: #FFFFFF; }
+        .essential-features { list-style-type: none; padding: 0; margin: 0; }
+        .essential-features li { font-size: 0.75rem; color: #9CA3AF; line-height: 1.8; margin-bottom: 0.75rem; display: flex; gap: 0.5rem; }
+        .essential-features li:before { content: "✓"; color: #FF3B30; font-weight: bold; flex-shrink: 0; margin-top: 0.1rem; }
+        .feature-item { display: inline; }
+        .feature-title { font-weight: 700; color: #FFFFFF; }
+        .feature-description { color: #9CA3AF; font-weight: 400; }
+        .radio-indicator { position: absolute; top: 1.5rem; right: 1.5rem; width: 1.5rem; height: 1.5rem; border: 2px solid #FF3B30; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .essential-box.selected .radio-indicator { background-color: #FF3B30; }
+        .radio-indicator::after { content: ""; width: 0.5rem; height: 0.5rem; background-color: white; border-radius: 50%; opacity: 0; transition: opacity 0.3s; }
+        .essential-box.selected .radio-indicator::after { opacity: 1; }
+        .addon-card { border: 2px solid #444852; background-color: #16181E; border-radius: 1rem; padding: 1rem; transition: all 0.2s ease; cursor: pointer; }
+        .addon-card:hover { border-color: #666; }
+        .addon-card input[type="checkbox"]:checked + .addon-content { opacity: 1; }
+        .addon-card input[type="checkbox"]:not(:checked) + .addon-content { opacity: 0.8; }
+        .addon-content { transition: opacity 0.2s; }
+        .checkbox-wrapper { display: flex; align-items: flex-start; gap: 0.75rem; }
+        .addon-card input[type="checkbox"] { flex-shrink: 0; width: 1.25rem; height: 1.25rem; margin-top: 0.125rem; accent-color: #FF3B30; cursor: pointer; }
+        .addon-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+        .addon-name { font-weight: 600; color: #FFFFFF; font-size: 0.9rem; }
+        .addon-price { color: #FF3B30; font-weight: 700; font-size: 0.9rem; }
+        .addon-limit { font-size: 0.7rem; color: #9CA3AF; margin-top: 0.25rem; }
+        .addon-description { font-size: 0.75rem; color: #9CA3AF; line-height: 1.4; margin-top: 0.5rem; }
+        .quantity-selector { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem; }
+        .quantity-selector button { width: 1.75rem; height: 1.75rem; padding: 0; border: 1px solid #444852; background: #1a1d24; color: #FFFFFF; border-radius: 0.375rem; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+        .quantity-selector button:hover { border-color: #FF3B30; background: #222; }
+        .quantity-selector button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .quantity-input { width: 2.5rem; text-align: center; background: #1a1d24; border: 1px solid #444852; color: #FFFFFF; border-radius: 0.375rem; font-weight: 600; font-size: 0.9rem; padding: 0.25rem; }
+        .quantity-input:focus { outline: none; border-color: #FF3B30; }
+        .error-message { background-color: rgba(255, 59, 48, 0.15); border: 1px solid #FF3B30; color: #FF3B30; padding: 0.75rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; display: none; }
+        .error-message.show { display: block; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between pb-32">
-
-    <!-- Header / Brand -->
     <header class="pt-8 pb-6 px-4 text-center border-b border-gray-800/60 bg-gradient-to-b from-card to-dark sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
         <div class="max-w-md mx-auto flex flex-col items-center">
             <div class="flex items-center gap-3 mb-2">
-                <div class="relative w-10 h-10 border-2 border-white rounded-lg flex items-center justify-center">
-                    <div class="w-3 h-3 bg-accent rounded-full rec-dot"></div>
-                </div>
+                <div class="relative w-10 h-10 border-2 border-white rounded-lg flex items-center justify-center"><div class="w-3 h-3 bg-accent rounded-full rec-dot"></div></div>
                 <div class="text-left">
                     <h1 class="text-2xl font-extrabold tracking-wider leading-none text-white">LIVETAKE</h1>
                     <p class="text-[10px] font-bold tracking-[0.3em] text-textMuted uppercase mt-1">A U D I O V I S U A L</p>
@@ -366,10 +94,7 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <main class="max-w-md mx-auto w-full px-4 pt-6 flex-1">
-        
-        <!-- Important Notices -->
         <div class="important-notices">
             <h3>⚠️ Avisos Importantes</h3>
             <ul>
@@ -379,260 +104,129 @@
             </ul>
         </div>
 
-        <!-- Error Message -->
-        <div id="error-message" class="error-message">
-            ⚠️ Por favor, selecione um pacote essencial (Bandas ou Produtores) para continuar.
-        </div>
+        <div id="error-message" class="error-message">⚠️ Por favor, selecione um pacote essencial (Bandas ou Produtores) para continuar.</div>
 
-        <!-- Pacotes Essenciais (Obrigatório escolher 1) -->
         <div>
             <h2 class="section-title">Selecione um Pacote Essencial *</h2>
-            
             <div class="space-y-4">
-                <!-- Essencial Bandas -->
                 <div class="essential-box" id="pkg-bandas" onclick="selectEssentialPackage('bandas')">
                     <div class="radio-indicator"></div>
                     <div class="essential-badge">🎸 Bandas</div>
                     <div class="essential-title">Essencial Bandas</div>
                     <div class="essential-prices">
-                        <div class="price-option">
-                            <span class="price-label">1 Data</span>
-                            <span class="price-value">R$ 300,00</span>
-                        </div>
-                        <div class="price-option">
-                            <span class="price-label">2 Datas</span>
-                            <span class="price-value">R$ 500,00</span>
-                        </div>
+                        <div class="price-option"><span class="price-label">1 Data</span><span class="price-value">R$ 300,00</span></div>
+                        <div class="price-option"><span class="price-label">2 Datas</span><span class="price-value">R$ 500,00</span></div>
                     </div>
                     <div class="date-selector" onclick="event.stopPropagation()">
                         <button class="date-btn" onclick="selectPkgDates('bandas', 1)">1 Data</button>
                         <button class="date-btn" onclick="selectPkgDates('bandas', 2)">2 Datas</button>
                     </div>
                     <ul class="essential-features">
-                        <li>
-                            <span class="feature-item"><span class="feature-title">1 Aftermovie</span> <span class="feature-description">(Vídeo-resumo com os melhores momentos da apresentação)</span></span>
-                        </li>
-                        <li>
-                            <span class="feature-item"><span class="feature-title">1 Vídeo de música completa</span> <span class="feature-description">(registrado em 2 ângulos, com áudio captado da mesa de som)</span></span>
-                        </li>
-                        <li>
-                            <span class="feature-item"><span class="feature-title">2 Vídeos curtos para Reels</span> <span class="feature-description">(aproximadamente 1 minuto, produzidos em 2 ângulos)</span></span>
-                        </li>
-                        <li>
-                            <span class="feature-item"><span class="feature-title">Até 2 horas de show</span></span>
-                        </li>
+                        <li><span class="feature-item">Cobertura fotográfica profissional (20 fotos tratadas em alta resolução)</span></li>
+                        <li><span class="feature-item"><span class="feature-title">1 Aftermovie</span> <span class="feature-description">(Vídeo-resumo com os melhores momentos da apresentação)</span></span></li>
+                        <li><span class="feature-item"><span class="feature-title">1 Vídeo de música completa</span> <span class="feature-description">(registrado em 2 ângulos, com áudio captado da mesa de som)</span></span></li>
+                        <li><span class="feature-item"><span class="feature-title">2 Vídeos curtos para Reels</span> <span class="feature-description">(aproximadamente 1 minuto, produzidos em 2 ângulos)</span></span></li>
+                        <li><span class="feature-item"><span class="feature-title">Até 2 horas de show</span></span></li>
                     </ul>
                 </div>
 
-                <!-- Essencial Produtores -->
                 <div class="essential-box" id="pkg-produtores" onclick="selectEssentialPackage('produtores')">
                     <div class="radio-indicator"></div>
                     <div class="essential-badge">🎬 Produtores</div>
                     <div class="essential-title">Essencial Produtores</div>
                     <div class="essential-prices">
-                        <div class="price-option">
-                            <span class="price-label">1 Data</span>
-                            <span class="price-value">R$ 350,00</span>
-                        </div>
-                        <div class="price-option">
-                            <span class="price-label">2 Datas</span>
-                            <span class="price-value">R$ 600,00</span>
-                        </div>
+                        <div class="price-option"><span class="price-label">1 Data</span><span class="price-value">R$ 350,00</span></div>
+                        <div class="price-option"><span class="price-label">2 Datas</span><span class="price-value">R$ 600,00</span></div>
                     </div>
                     <div class="date-selector" onclick="event.stopPropagation()">
                         <button class="date-btn" onclick="selectPkgDates('produtores', 1)">1 Data</button>
                         <button class="date-btn" onclick="selectPkgDates('produtores', 2)">2 Datas</button>
                     </div>
                     <ul class="essential-features">
-                        <li>
-                            <span class="feature-item"><span class="feature-title">Storymaker</span> <span class="feature-description">(Cobertura em tempo real para os Stories, com registros verticais)</span></span>
-                        </li>
-                        <li>
-                            <span class="feature-item"><span class="feature-title">Aftermovie</span> <span class="feature-description">(Vídeo-resumo com os melhores momentos, incluindo público e bastidores)</span></span>
-                        </li>
-                        <li>
-                            <span class="feature-item"><span class="feature-title">Cobertura fotográfica</span> <span class="feature-description">(Registro fotográfico do show com câmera, incluindo público e artistas)</span></span>
-                        </li>
-                        <li>
-                            <span class="feature-item"><span class="feature-title">Até 5 horas de evento</span></span>
-                        </li>
+                        <li><span class="feature-item"><span class="feature-title">Storymaker</span> <span class="feature-description">(Cobertura em tempo real para os Stories, com registros verticais)</span></span></li>
+                        <li><span class="feature-item"><span class="feature-title">Aftermovie</span> <span class="feature-description">(Vídeo-resumo com os melhores momentos, incluindo público e bastidores)</span></span></li>
+                        <li><span class="feature-item"><span class="feature-title">Cobertura fotográfica</span> <span class="feature-description">(Registro fotográfico do show com câmera, incluindo público e artistas)</span></span></li>
+                        <li><span class="feature-item"><span class="feature-title">Até 5 horas de evento</span></span></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Adicionais Secção -->
         <h2 class="section-title mt-8">Serviços Adicionais</h2>
-
-        <!-- Adicionais - Seleção Única (Checkbox) -->
         <div class="space-y-3 mb-6">
-            
-            <!-- Cobertura Fotográfica (apenas se não foi selecionado Produtores) -->
             <div id="addon-fotografia-container" class="addon-card" onclick="toggleAddon(this)" style="display: none;">
                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="addon-fotografia" class="addon-checkbox" data-name="Cobertura Fotográfica" data-price="150" data-max="1">
                     <div class="addon-content flex-1">
-                        <div class="addon-header">
-                            <div>
-                                <div class="addon-name">Cobertura Fotográfica</div>
-                                <div class="addon-limit">Seleção única</div>
-                            </div>
-                            <div class="addon-price">+R$ 150,00</div>
-                        </div>
+                        <div class="addon-header"><div><div class="addon-name">Cobertura Fotográfica</div><div class="addon-limit">Seleção única</div></div><div class="addon-price">+R$ 150,00</div></div>
                         <div class="addon-description">Registro fotográfico do show com câmera, incluindo momentos da apresentação, artistas e público. Entrega média de 40 fotos tratadas em alta qualidade.</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Storymaker (apenas se não foi selecionado Produtores) -->
             <div id="addon-storymaker-container" class="addon-card" onclick="toggleAddon(this)" style="display: none;">
                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="addon-storymaker" class="addon-checkbox" data-name="Storymaker" data-price="150" data-max="1">
                     <div class="addon-content flex-1">
-                        <div class="addon-header">
-                            <div>
-                                <div class="addon-name">Storymaker</div>
-                                <div class="addon-limit">Seleção única</div>
-                            </div>
-                            <div class="addon-price">+R$ 150,00</div>
-                        </div>
+                        <div class="addon-header"><div><div class="addon-name">Storymaker</div><div class="addon-limit">Seleção única</div></div><div class="addon-price">+R$ 150,00</div></div>
                         <div class="addon-description">Cobertura em tempo real para os Stories, com registros verticais feitos durante o evento. Inclui 8 Stories mostrando apresentação, bastidores e público.</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Adicionais - Seleção Múltipla -->
         <h3 class="text-sm font-bold text-white uppercase tracking-wide mt-6 mb-3 text-textMuted">Escolha as quantidades adicionais:</h3>
-
         <div class="space-y-3">
-            
-            <!-- Aftermovie Adicional -->
             <div class="addon-card">
-                <div class="flex items-start justify-between gap-3 mb-3">
-                    <div>
-                        <div class="addon-name">Aftermovie Adicional</div>
-                        <div class="addon-limit">Até 10 unidades</div>
-                        <div class="addon-description mt-1">Vídeo-resumo adicional do show, reunindo os principais momentos da apresentação em uma edição dinâmica.</div>
-                    </div>
-                    <div class="addon-price text-right">+R$ 100<br><span style="font-size: 0.75rem;">p/ unid.</span></div>
-                </div>
-                <div class="quantity-selector">
-                    <button onclick="decreaseQty('aftermovie-qty')">−</button>
-                    <input type="number" id="aftermovie-qty" class="quantity-input" value="0" min="0" max="10" data-name="Aftermovie Adicional" data-price="100" onchange="updateTotal()">
-                    <button onclick="increaseQty('aftermovie-qty')">+</button>
-                </div>
+                <div class="flex items-start justify-between gap-3 mb-3"><div><div class="addon-name">Aftermovie Adicional</div><div class="addon-limit">Até 10 unidades</div><div class="addon-description mt-1">Vídeo-resumo adicional do show, reunindo os principais momentos da apresentação em uma edição dinâmica.</div></div><div class="addon-price text-right">+R$ 100<br><span style="font-size: 0.75rem;">p/ unid.</span></div></div>
+                <div class="quantity-selector"><button onclick="decreaseQty('aftermovie-qty')">−</button><input type="number" id="aftermovie-qty" class="quantity-input" value="0" min="0" max="10" data-name="Aftermovie Adicional" data-price="100" onchange="updateTotal()"><button onclick="increaseQty('aftermovie-qty')">+</button></div>
             </div>
 
-            <!-- Vídeo Curto Adicional -->
             <div class="addon-card">
-                <div class="flex items-start justify-between gap-3 mb-3">
-                    <div>
-                        <div class="addon-name">Vídeo Curto Adicional</div>
-                        <div class="addon-limit">Até 10 unidades</div>
-                        <div class="addon-description mt-1">Trecho de uma música da apresentação, registrado em 2 ângulos, com áudio captado da mesa de som. Ideal para Reels, Shorts e Stories.</div>
-                    </div>
-                    <div class="addon-price text-right">+R$ 50<br><span style="font-size: 0.75rem;">p/ unid.</span></div>
-                </div>
-                <div class="quantity-selector">
-                    <button onclick="decreaseQty('videocurto-qty')">−</button>
-                    <input type="number" id="videocurto-qty" class="quantity-input" value="0" min="0" max="10" data-name="Vídeo Curto Adicional" data-price="50" onchange="updateTotal()">
-                    <button onclick="increaseQty('videocurto-qty')">+</button>
-                </div>
+                <div class="flex items-start justify-between gap-3 mb-3"><div><div class="addon-name">Vídeo Curto Adicional</div><div class="addon-limit">Até 10 unidades</div><div class="addon-description mt-1">Trecho de uma música da apresentação, registrado em 2 ângulos, com áudio captado da mesa de som. Ideal para Reels, Shorts e Stories.</div></div><div class="addon-price text-right">+R$ 50<br><span style="font-size: 0.75rem;">p/ unid.</span></div></div>
+                <div class="quantity-selector"><button onclick="decreaseQty('videocurto-qty')">−</button><input type="number" id="videocurto-qty" class="quantity-input" value="0" min="0" max="10" data-name="Vídeo Curto Adicional" data-price="50" onchange="updateTotal()"><button onclick="increaseQty('videocurto-qty')">+</button></div>
             </div>
 
-            <!-- Vídeo de Música Completa Adicional -->
             <div class="addon-card">
-                <div class="flex items-start justify-between gap-3 mb-3">
-                    <div>
-                        <div class="addon-name">Vídeo de Música Completa Adicional</div>
-                        <div class="addon-limit">Até 10 unidades</div>
-                        <div class="addon-description mt-1">Uma música completa da apresentação, registrada em 2 ângulos, com áudio captado diretamente da mesa de som.</div>
-                    </div>
-                    <div class="addon-price text-right">+R$ 100<br><span style="font-size: 0.75rem;">p/ unid.</span></div>
-                </div>
-                <div class="quantity-selector">
-                    <button onclick="decreaseQty('videomusica-qty')">−</button>
-                    <input type="number" id="videomusica-qty" class="quantity-input" value="0" min="0" max="10" data-name="Vídeo de Música Completa Adicional" data-price="100" onchange="updateTotal()">
-                    <button onclick="increaseQty('videomusica-qty')">+</button>
-                </div>
+                <div class="flex items-start justify-between gap-3 mb-3"><div><div class="addon-name">Vídeo de Música Completa Adicional</div><div class="addon-limit">Até 10 unidades</div><div class="addon-description mt-1">Uma música completa da apresentação, registrada em 2 ângulos, com áudio captado diretamente da mesa de som.</div></div><div class="addon-price text-right">+R$ 100<br><span style="font-size: 0.75rem;">p/ unid.</span></div></div>
+                <div class="quantity-selector"><button onclick="decreaseQty('videomusica-qty')">−</button><input type="number" id="videomusica-qty" class="quantity-input" value="0" min="0" max="10" data-name="Vídeo de Música Completa Adicional" data-price="100" onchange="updateTotal()"><button onclick="increaseQty('videomusica-qty')">+</button></div>
             </div>
 
-            <!-- Hora Extra -->
             <div class="addon-card">
-                <div class="flex items-start justify-between gap-3 mb-3">
-                    <div>
-                        <div class="addon-name">Hora Extra</div>
-                        <div class="addon-limit">Até 10 horas</div>
-                        <div class="addon-description mt-1">Para coberturas que ultrapassem o período inicialmente contratado. Cada hora adicional de cobertura é acrescentada ao valor do pacote estabelecido.</div>
-                    </div>
-                    <div class="addon-price text-right">+R$ 80<br><span style="font-size: 0.75rem;">p/ hora</span></div>
-                </div>
-                <div class="quantity-selector">
-                    <button onclick="decreaseQty('horaextra-qty')">−</button>
-                    <input type="number" id="horaextra-qty" class="quantity-input" value="0" min="0" max="10" data-name="Hora Extra" data-price="80" onchange="updateTotal()">
-                    <button onclick="increaseQty('horaextra-qty')">+</button>
-                </div>
+                <div class="flex items-start justify-between gap-3 mb-3"><div><div class="addon-name">Hora Extra</div><div class="addon-limit">Até 10 horas</div><div class="addon-description mt-1">Para coberturas que ultrapassem o período inicialmente contratado. Cada hora adicional de cobertura é acrescentada ao valor do pacote estabelecido.</div></div><div class="addon-price text-right">+R$ 80<br><span style="font-size: 0.75rem;">p/ hora</span></div></div>
+                <div class="quantity-selector"><button onclick="decreaseQty('horaextra-qty')">−</button><input type="number" id="horaextra-qty" class="quantity-input" value="0" min="0" max="10" data-name="Hora Extra" data-price="80" onchange="updateTotal()"><button onclick="increaseQty('horaextra-qty')">+</button></div>
             </div>
         </div>
-
     </main>
 
-    <!-- Sticky Bottom Bar -->
     <div class="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-md border-t border-gray-800 p-4 z-50">
         <div class="max-w-md mx-auto flex flex-col gap-3">
             <div class="flex items-start justify-between px-1">
-                <div>
-                    <span class="text-xs uppercase tracking-wider font-bold text-textMuted block mb-1">Valor Total</span>
-                    <span id="total-price" class="text-3xl font-black text-accent">R$ 0,00</span>
-                </div>
-                <div class="text-right text-xs text-textMuted">
-                    <div id="summary-items">Selecione um pacote</div>
-                </div>
+                <div><span class="text-xs uppercase tracking-wider font-bold text-textMuted block mb-1">Valor Total</span><span id="total-price" class="text-3xl font-black text-accent">R$ 0,00</span></div>
+                <div class="text-right text-xs text-textMuted"><div id="summary-items">Selecione um pacote</div></div>
             </div>
-            
             <button onclick="sendToWhatsapp()" class="w-full bg-accent hover:bg-accentDark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-accent/20 flex items-center justify-center gap-2">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.891-1.979-.001-3.951-.5-5.694-1.448l-6.305 2.075zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.383 1.928 6.256L1.67 23.382l6.984-2.307z"/>
-                    <path d="M17.204 14.489c-.624-.312-1.435-.855-1.835-1.569-.4-.714-.223-1.475.891-2.799.528-.639 1.156-1.484 1.156-2.623 0-1.139-.628-2.484-1.156-3.123-1.114-1.324-1.291-.985-.891.271.4.714-1.035 1.257-1.659 1.569-.624.312-1.455.338-2.079.026-.624-.312-1.456-1.039-1.835-1.753-.379-.714.223-1.475 1.114-1.814.891-.338 1.519.156 2.143.468.624.312 1.251 1.039 1.251 1.752 0 .714-.627 1.441-1.251 1.753-.624.312-1.251 1.182-.627 1.897.624.714 1.659 1.257 2.283 1.569.624.312 1.455.338 2.079.026.624-.312 1.436-1.038 1.835-1.753.399-.714-.224-1.474-1.115-1.814-.891-.339-1.52.156-2.144.468-.624.312-1.251 1.039-1.251 1.753 0 .713.627 1.44 1.251 1.752.624.312 1.251 1.182.627 1.897-.624.714-1.659 1.257-2.283 1.569-.624.312-1.455.337-2.079.025"/>
-                </svg>
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.891-1.979-.001-3.951-.5-5.694-1.449l-6.299 2.656zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.383 1.928 6.256l.1.158-1.139 4.158 4.26-1.391.340.130z"/></svg>
                 Solicitar Pacote no WhatsApp
             </button>
         </div>
     </div>
 
-    <!-- Script de Seleção e WhatsApp -->
     <script>
-        const ESSENCIAL_PRICES = {
-            bandas: { 1: 300, 2: 500 },
-            produtores: { 1: 350, 2: 600 }
-        };
-
+        const ESSENCIAL_PRICES = { bandas: { 1: 300, 2: 500 }, produtores: { 1: 350, 2: 600 } };
         let selectedEssential = null;
         let selectedDates = {};
         let selectedCheckboxAddons = {};
-        let quantityAddons = {};
 
         function selectEssentialPackage(pkg) {
             selectedEssential = pkg;
-            
-            // Inicializa datas para este pacote se não existir
-            if (!selectedDates[pkg]) {
-                selectedDates[pkg] = 1;
-            }
-
-            // Atualiza UI dos pacotes
+            if (!selectedDates[pkg]) selectedDates[pkg] = 1;
             document.getElementById('pkg-bandas').classList.toggle('selected', pkg === 'bandas');
             document.getElementById('pkg-produtores').classList.toggle('selected', pkg === 'produtores');
-
-            // Atualiza botões de data
             updateDateButtons();
-
-            // Mostra/esconde adicionais baseado na seleção
             if (pkg === 'produtores') {
                 document.getElementById('addon-fotografia-container').style.display = 'none';
                 document.getElementById('addon-storymaker-container').style.display = 'none';
-                // Desmarcar esses adicionais se estavam selecionados
                 document.getElementById('addon-fotografia').checked = false;
                 document.getElementById('addon-storymaker').checked = false;
                 delete selectedCheckboxAddons['addon-fotografia'];
@@ -641,63 +235,37 @@
                 document.getElementById('addon-fotografia-container').style.display = 'block';
                 document.getElementById('addon-storymaker-container').style.display = 'block';
             }
-
-            // Esconde mensagem de erro
             document.getElementById('error-message').classList.remove('show');
-            
             updateTotal();
         }
 
         function updateDateButtons() {
             if (!selectedEssential) return;
-
             const datesBandas = selectedDates['bandas'] || 1;
             const datesProdutores = selectedDates['produtores'] || 1;
-
-            // Atualiza botões de Bandas
             const bandas1Btn = document.querySelector('#pkg-bandas .date-btn:nth-child(1)');
             const bandas2Btn = document.querySelector('#pkg-bandas .date-btn:nth-child(2)');
-            
             bandas1Btn.classList.toggle('selected', datesBandas === 1);
             bandas2Btn.classList.toggle('selected', datesBandas === 2);
-
-            // Atualiza botões de Produtores
             const prod1Btn = document.querySelector('#pkg-produtores .date-btn:nth-child(1)');
             const prod2Btn = document.querySelector('#pkg-produtores .date-btn:nth-child(2)');
-            
             prod1Btn.classList.toggle('selected', datesProdutores === 1);
             prod2Btn.classList.toggle('selected', datesProdutores === 2);
         }
 
         function selectPkgDates(pkg, dates) {
             selectedDates[pkg] = dates;
-            
-            // Se este pacote não estava selecionado, seleciona
-            if (selectedEssential !== pkg) {
-                selectEssentialPackage(pkg);
-            } else {
-                updateDateButtons();
-                updateTotal();
-            }
+            if (selectedEssential !== pkg) selectEssentialPackage(pkg);
+            else { updateDateButtons(); updateTotal(); }
         }
 
         function toggleAddon(cardElement) {
             const checkbox = cardElement.querySelector('input[type="checkbox"]');
             const id = checkbox.id;
-            const isChecked = checkbox.checked;
-            
-            if (!isChecked) {
+            if (!checkbox.checked) {
                 checkbox.checked = true;
-                selectedCheckboxAddons[id] = {
-                    name: checkbox.dataset.name,
-                    price: parseFloat(checkbox.dataset.price),
-                    max: parseFloat(checkbox.dataset.max)
-                };
-            } else {
-                checkbox.checked = false;
-                delete selectedCheckboxAddons[id];
-            }
-            
+                selectedCheckboxAddons[id] = { name: checkbox.dataset.name, price: parseFloat(checkbox.dataset.price), max: parseFloat(checkbox.dataset.max) };
+            } else { checkbox.checked = false; delete selectedCheckboxAddons[id]; }
             updateTotal();
         }
 
@@ -705,19 +273,13 @@
             const input = document.getElementById(inputId);
             const max = parseInt(input.max);
             const current = parseInt(input.value) || 0;
-            if (current < max) {
-                input.value = current + 1;
-                updateTotal();
-            }
+            if (current < max) { input.value = current + 1; updateTotal(); }
         }
 
         function decreaseQty(inputId) {
             const input = document.getElementById(inputId);
             const current = parseInt(input.value) || 0;
-            if (current > 0) {
-                input.value = current - 1;
-                updateTotal();
-            }
+            if (current > 0) { input.value = current - 1; updateTotal(); }
         }
 
         function updateTotal() {
@@ -726,93 +288,39 @@
                 document.getElementById('summary-items').textContent = 'Selecione um pacote';
                 return;
             }
-
             const dates = selectedDates[selectedEssential] || 1;
             let total = ESSENCIAL_PRICES[selectedEssential][dates];
-            let itemCount = 0;
             let summary = [];
-
-            // Pacote essencial
             const pkgName = selectedEssential === 'bandas' ? 'Essencial Bandas' : 'Essencial Produtores';
-            const pkgDisplay = pkgName + ' (' + dates + ' data' + (dates > 1 ? 's' : '') + ')';
-            summary.push(pkgDisplay);
-
-            // Adiciona checkboxes
-            Object.keys(selectedCheckboxAddons).forEach(id => {
-                const addon = selectedCheckboxAddons[id];
-                total += addon.price;
-                itemCount++;
-                summary.push(addon.name);
-            });
-
-            // Adiciona quantidades
-            const qtyInputs = document.querySelectorAll('.quantity-input');
-            qtyInputs.forEach(input => {
-                const qty = parseInt(input.value) || 0;
-                if (qty > 0) {
-                    const price = parseFloat(input.dataset.price);
-                    const name = input.dataset.name;
-                    total += price * qty;
-                    itemCount += qty;
-                    summary.push(`${qty}x ${name}`);
-                }
-            });
-
-            // Atualiza display
+            summary.push(pkgName + ' (' + dates + ' data' + (dates > 1 ? 's' : '') + ')');
+            Object.keys(selectedCheckboxAddons).forEach(id => { const addon = selectedCheckboxAddons[id]; total += addon.price; summary.push(addon.name); });
+            document.querySelectorAll('.quantity-input').forEach(input => { const qty = parseInt(input.value) || 0; if (qty > 0) { const price = parseFloat(input.dataset.price); const name = input.dataset.name; total += price * qty; summary.push(`${qty}x ${name}`); } });
             document.getElementById('total-price').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
             document.getElementById('summary-items').textContent = summary.join(' + ');
         }
 
         function sendToWhatsapp() {
-            if (!selectedEssential) {
-                document.getElementById('error-message').classList.add('show');
-                return;
-            }
-
+            if (!selectedEssential) { document.getElementById('error-message').classList.add('show'); return; }
             const dates = selectedDates[selectedEssential] || 1;
             let total = ESSENCIAL_PRICES[selectedEssential][dates];
             let items = [];
-
             const pkgName = selectedEssential === 'bandas' ? 'Essencial Bandas' : 'Essencial Produtores';
             let pkgDesc = '';
-
             if (selectedEssential === 'bandas') {
-                pkgDesc = `• 1x ${pkgName} - ${dates} data${dates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - 1 Aftermovie\n  - 1 Vídeo de música completa (2 ângulos)\n  - 2 Vídeos curtos para Reels\n  - Até 2 horas de show`;
+                pkgDesc = `• 1x ${pkgName} - ${dates} data${dates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - Cobertura fotográfica profissional (20 fotos tratadas em alta resolução)\n  - 1 Aftermovie\n  - 1 Vídeo de música completa (2 ângulos)\n  - 2 Vídeos curtos para Reels\n  - Até 2 horas de show`;
             } else {
                 pkgDesc = `• 1x ${pkgName} - ${dates} data${dates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - Storymaker (8 Stories)\n  - Aftermovie\n  - Cobertura fotográfica\n  - Até 5 horas de evento`;
             }
             items.push(pkgDesc);
-
-            // Adiciona itens checkbox
-            Object.keys(selectedCheckboxAddons).forEach(id => {
-                const addon = selectedCheckboxAddons[id];
-                items.push(`• 1x ${addon.name} (R$ ${addon.price.toFixed(2).replace('.', ',')})`);
-                total += addon.price;
-            });
-
-            // Adiciona quantidades
-            const qtyInputs = document.querySelectorAll('.quantity-input');
-            qtyInputs.forEach(input => {
-                const qty = parseInt(input.value) || 0;
-                if (qty > 0) {
-                    const price = parseFloat(input.dataset.price);
-                    const name = input.dataset.name;
-                    const subtotal = price * qty;
-                    items.push(`• ${qty}x ${name} (R$ ${subtotal.toFixed(2).replace('.', ',')})`);
-                    total += subtotal;
-                }
-            });
-
+            Object.keys(selectedCheckboxAddons).forEach(id => { const addon = selectedCheckboxAddons[id]; items.push(`• 1x ${addon.name} (R$ ${addon.price.toFixed(2).replace('.', ',')})`); total += addon.price; });
+            document.querySelectorAll('.quantity-input').forEach(input => { const qty = parseInt(input.value) || 0; if (qty > 0) { const price = parseFloat(input.dataset.price); const name = input.dataset.name; const subtotal = price * qty; items.push(`• ${qty}x ${name} (R$ ${subtotal.toFixed(2).replace('.', ',')})`); total += subtotal; } });
             let msg = `*Olá, LiveTake! Tenho interesse na seguinte cobertura para meu evento:*\n\n`;
             msg += items.join('\n') + '\n\n';
-            msg += `*Valor Total: R$ ${total.toFixed(2).replace('.', ',')}\n\n`;
+            msg += `*Valor Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
             msg += `Gostaria de verificar a disponibilidade de data!`;
-
-            const url = `https://wa.me/5521980563235?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
+            window.open(`https://wa.me/5521980563235?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Inicializa
         updateDateButtons();
     </script>
 </body>
