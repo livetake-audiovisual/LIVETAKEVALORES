@@ -17,9 +17,7 @@
                         accentDark: '#D7261D',
                         textMuted: '#9CA3AF'
                     },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
                 }
             }
         }
@@ -125,7 +123,7 @@
                         <li><span class="feature-item"><span class="feature-title">Cobertura fotográfica profissional</span> <span class="feature-description">(20 fotos tratadas em alta resolução)</span></span></li>
                         <li><span class="feature-item"><span class="feature-title">1 Aftermovie</span> <span class="feature-description">(Vídeo-resumo com os melhores momentos da apresentação)</span></span></li>
                         <li><span class="feature-item"><span class="feature-title">1 Vídeo de música completa</span> <span class="feature-description">(registrado em 2 ângulos, com áudio captado da mesa de som)</span></span></li>
-                        <li><span class="feature-item"><span class="feature-title">2 Vídeos curtos para Reels</span> <span class="feature-description">(aproximadamente 1 minuto, produzidos em 2 ângulos)</span></span></li>
+                        <li><span class="feature-item"><span class="feature-title">1 Vídeo curto para Reels</span> <span class="feature-description">(aproximadamente 1 minuto, produzido em 2 ângulos)</span></span></li>
                         <li><span class="feature-item"><span class="feature-title">Até 2 horas de show</span></span></li>
                     </ul>
                 </div>
@@ -303,7 +301,7 @@
             const pkgName = selectedEssential === 'bandas' ? 'Essencial Bandas' : 'Essencial Produtores';
             let pkgDesc = '';
             if (selectedEssential === 'bandas') {
-                pkgDesc = `• 1x ${pkgName} - ${dates} data${dates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - Cobertura fotográfica profissional (20 fotos tratadas em alta resolução)\n  - 1 Aftermovie\n  - 1 Vídeo de música completa (2 ângulos)\n  - 2 Vídeos curtos para Reels\n  - Até 2 horas de show`;
+                pkgDesc = `• 1x ${pkgName} - ${dates} data${dates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - Cobertura fotográfica profissional (20 fotos tratadas em alta resolução)\n  - 1 Aftermovie\n  - 1 Vídeo de música completa (2 ângulos)\n  - 1 Vídeo curto para Reels (aproximadamente 1 minuto, produzido em 2 ângulos)\n  - Até 2 horas de show`;
             } else {
                 pkgDesc = `• 1x ${pkgName} - ${dates} data${dates > 1 ? 's' : ''} (R$ ${total.toFixed(2).replace('.', ',')})\n  - Storymaker (8 Stories)\n  - Aftermovie\n  - Cobertura fotográfica\n  - Até 5 horas de evento`;
             }
