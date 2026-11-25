@@ -122,7 +122,7 @@
                         <button class="date-btn" onclick="selectPkgDates('bandas', 2)">2 Datas</button>
                     </div>
                     <ul class="essential-features">
-                        <li><span class="feature-item">Cobertura fotográfica profissional (20 fotos tratadas em alta resolução)</span></li>
+                        <li><span class="feature-item"><span class="feature-title">Cobertura fotográfica profissional</span> <span class="feature-description">(20 fotos tratadas em alta resolução)</span></span></li>
                         <li><span class="feature-item"><span class="feature-title">1 Aftermovie</span> <span class="feature-description">(Vídeo-resumo com os melhores momentos da apresentação)</span></span></li>
                         <li><span class="feature-item"><span class="feature-title">1 Vídeo de música completa</span> <span class="feature-description">(registrado em 2 ângulos, com áudio captado da mesa de som)</span></span></li>
                         <li><span class="feature-item"><span class="feature-title">2 Vídeos curtos para Reels</span> <span class="feature-description">(aproximadamente 1 minuto, produzidos em 2 ângulos)</span></span></li>
@@ -163,7 +163,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="addon-storymaker-container" class="addon-card" onclick="toggleAddon(this)" style="display: none;">
                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="addon-storymaker" class="addon-checkbox" data-name="Storymaker" data-price="150" data-max="1">
@@ -181,17 +180,14 @@
                 <div class="flex items-start justify-between gap-3 mb-3"><div><div class="addon-name">Aftermovie Adicional</div><div class="addon-limit">Até 10 unidades</div><div class="addon-description mt-1">Vídeo-resumo adicional do show, reunindo os principais momentos da apresentação em uma edição dinâmica.</div></div><div class="addon-price text-right">+R$ 100<br><span style="font-size: 0.75rem;">p/ unid.</span></div></div>
                 <div class="quantity-selector"><button onclick="decreaseQty('aftermovie-qty')">−</button><input type="number" id="aftermovie-qty" class="quantity-input" value="0" min="0" max="10" data-name="Aftermovie Adicional" data-price="100" onchange="updateTotal()"><button onclick="increaseQty('aftermovie-qty')">+</button></div>
             </div>
-
             <div class="addon-card">
                 <div class="flex items-start justify-between gap-3 mb-3"><div><div class="addon-name">Vídeo Curto Adicional</div><div class="addon-limit">Até 10 unidades</div><div class="addon-description mt-1">Trecho de uma música da apresentação, registrado em 2 ângulos, com áudio captado da mesa de som. Ideal para Reels, Shorts e Stories.</div></div><div class="addon-price text-right">+R$ 50<br><span style="font-size: 0.75rem;">p/ unid.</span></div></div>
                 <div class="quantity-selector"><button onclick="decreaseQty('videocurto-qty')">−</button><input type="number" id="videocurto-qty" class="quantity-input" value="0" min="0" max="10" data-name="Vídeo Curto Adicional" data-price="50" onchange="updateTotal()"><button onclick="increaseQty('videocurto-qty')">+</button></div>
             </div>
-
             <div class="addon-card">
                 <div class="flex items-start justify-between gap-3 mb-3"><div><div class="addon-name">Vídeo de Música Completa Adicional</div><div class="addon-limit">Até 10 unidades</div><div class="addon-description mt-1">Uma música completa da apresentação, registrada em 2 ângulos, com áudio captado diretamente da mesa de som.</div></div><div class="addon-price text-right">+R$ 100<br><span style="font-size: 0.75rem;">p/ unid.</span></div></div>
                 <div class="quantity-selector"><button onclick="decreaseQty('videomusica-qty')">−</button><input type="number" id="videomusica-qty" class="quantity-input" value="0" min="0" max="10" data-name="Vídeo de Música Completa Adicional" data-price="100" onchange="updateTotal()"><button onclick="increaseQty('videomusica-qty')">+</button></div>
             </div>
-
             <div class="addon-card">
                 <div class="flex items-start justify-between gap-3 mb-3"><div><div class="addon-name">Hora Extra</div><div class="addon-limit">Até 10 horas</div><div class="addon-description mt-1">Para coberturas que ultrapassem o período inicialmente contratado. Cada hora adicional de cobertura é acrescentada ao valor do pacote estabelecido.</div></div><div class="addon-price text-right">+R$ 80<br><span style="font-size: 0.75rem;">p/ hora</span></div></div>
                 <div class="quantity-selector"><button onclick="decreaseQty('horaextra-qty')">−</button><input type="number" id="horaextra-qty" class="quantity-input" value="0" min="0" max="10" data-name="Hora Extra" data-price="80" onchange="updateTotal()"><button onclick="increaseQty('horaextra-qty')">+</button></div>
